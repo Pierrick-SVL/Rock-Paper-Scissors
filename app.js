@@ -4,6 +4,7 @@ const paper = document.querySelector("#paper");
 const rock = document.querySelector("#rock");
 const scissors = document.querySelector("#scissors");
 const resultsContainer = document.querySelector(".results-container")
+const computerResult = document.querySelector("#computer-choice")
 const result = document.querySelector("#round-result")
 const score = document.querySelector("#score")
 
@@ -15,27 +16,68 @@ let index = Math.floor(Math.random() * 3);
 }
 
 paper.addEventListener("click", () => {
+
+      if (humanScore === 5 || computerScore === 5) {
+    return;
+  }
+  
     const humanChoice = "paper";
     const computerChoice = getComputerChoice();
     console.log(result)
     resultsContainer.style.display = "block";
-    result.textContent = playRound(humanChoice, computerChoice)
+    computerResult.textContent = `Computer choice: ${computerChoice}`;
+    result.textContent = playRound(humanChoice, computerChoice);
+       score.textContent = `Human: ${humanScore} | Computer: ${computerScore}`
+
+       if (humanScore === 5 ) {
+         result.textContent = "You are the winner !";
+       } else if (computerScore === 5) {
+        result.textContent = "Game over...Computer is the winner !"
+       } 
 })
 
 rock.addEventListener("click", () => {
+
+    if (humanScore === 5 || computerScore === 5) {
+    return;
+  }
+
     const humanChoice = "rock";
     const computerChoice = getComputerChoice();
     console.log(result)
      resultsContainer.style.display = "block";
-     result.textContent = playRound(humanChoice, computerChoice)
+      computerResult.textContent = `Computer choice: ${computerChoice}`;
+     result.textContent = playRound(humanChoice, computerChoice);
+     score.textContent = `Human: ${humanScore} | Computer: ${computerScore}`
+
+     
+       if (humanScore === 5 ) {
+         result.textContent = "You are the winner !";
+       } else if (computerScore === 5) {
+        result.textContent = "Game over...Computer is the winner !";
+       } 
 })
 
 scissors.addEventListener("click", () => {
+
+      if (humanScore === 5 || computerScore === 5) {
+    return;
+  }
+  
     const humanChoice = "scissors";
     const computerChoice = getComputerChoice();
     console.log(result)
      resultsContainer.style.display = "block";
-     result.textContent = playRound(humanChoice, computerChoice)
+      computerResult.textContent = `Computer choice: ${computerChoice}`;
+     result.textContent = playRound(humanChoice, computerChoice);
+        score.textContent = `Human: ${humanScore} | Computer: ${computerScore}`
+
+        
+       if (humanScore === 5 ) {
+         result.textContent = "You are the winner !";
+       } else if (computerScore === 5) {
+        result.textContent = "Game over...Computer is the winner !"
+       }
 })
 
 function playRound(humanChoice, computerChoice) {
